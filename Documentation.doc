@@ -1,0 +1,82 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<title>Interest Management System Documentation</title>
+<style>
+  body { font-family: 'Calibri', 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 40px; }
+  h1 { color: #2c3e50; font-size: 28pt; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+  h2 { color: #2980b9; font-size: 18pt; margin-top: 30px; }
+  h3 { color: #16a085; font-size: 14pt; margin-top: 20px; }
+  p { font-size: 12pt; text-align: justify; }
+  ul { font-size: 12pt; }
+  li { margin-bottom: 8px; }
+  .formula { background-color: #f8f9fa; padding: 15px; border-left: 4px solid #e74c3c; font-family: 'Courier New', Courier, monospace; font-size: 12pt; margin: 10px 0; }
+  .tech-stack { font-weight: bold; color: #8e44ad; }
+</style>
+</head>
+<body>
+
+<h1>Interest Management System Documentation</h1>
+
+<h2>1. Executive Summary</h2>
+<p>The Interest Management System is a modern, high-performance Full-Stack Web Application tailored for financial administration. It allows an administrator to manage customer loans, track flat-interest accruals over exact dates, record repayments, and generate automated PDF agreements. The system features a state-of-the-art "Glassmorphism" User Interface with real-time Dark/Light mode toggles, built to operate flawlessly on both desktop and mobile devices.</p>
+
+<h2>2. Technology Stack & Languages</h2>
+<ul>
+    <li><span class="tech-stack">Frontend Interface:</span> React.js (Vite), JavaScript (ES6+), React-Bootstrap, Custom CSS3 Variables.</li>
+    <li><span class="tech-stack">Backend API & Server:</span> Node.js, Express.js.</li>
+    <li><span class="tech-stack">Database Management:</span> MongoDB via Mongoose ORM.</li>
+    <li><span class="tech-stack">Authentication:</span> JSON Web Tokens (JWT) & bcryptjs (Static Admin Implementation).</li>
+    <li><span class="tech-stack">File & Report Generation:</span> PDFKit for server-side PDF generation.</li>
+</ul>
+
+<h2>3. Core Functionalities</h2>
+<ul>
+    <li><strong>Secure Authentication:</strong> A strictly locked login system preventing unauthorized access, ensuring only the assigned administrator can view financial records.</li>
+    <li><strong>Financial Dashboard:</strong> A real-time aggregated overview detailing Total Capital Given, Total Interest Profit Expected, and an automated Reminder Engine that flags Overdue accounts.</li>
+    <li><strong>Customer Loan Management:</strong> Full CRUD operations to register clients. It supports optional photo uploads (Base64 storage) and strict form validations ensuring mandatory financial data entries.</li>
+    <li><strong>Automated Repayments:</strong> A built-in ledger system where recorded payments automatically subtract from the customer's total outstanding balance. If the balance reaches zero, the loan status is dynamically flipped to "Paid".</li>
+    <li><strong>Automated PDF Generation:</strong> Instant creation of Customer Loan Agreements featuring exact Indian Rupee formatting (e.g., Rs. 1,00,000.00) and precisely calculated durations, downloaded automatically under the customer's real name.</li>
+    <li><strong>Global Theme Engine:</strong> A persistent Dark Mode and frosted-glass Light Mode toggle that actively rewrites the CSS variables to invert all tables, inputs, and backgrounds instantly.</li>
+    <li><strong>Floating Calculator Widget:</strong> A globally accessible digital calculator allowing the admin to perform quick external mathematical checks without leaving the platform.</li>
+</ul>
+
+<h2>4. Mathematical Formulas & Calculations</h2>
+
+<h3>A. Exact Duration Engine (Frontend & Backend)</h3>
+<p>This algorithm calculates the exact time difference between the Start Date and the End Date to present a precise string such as "1 year, 6 months, 15 days".</p>
+<div class="formula">
+    1. Calculate Raw Difference: Years = EndYear - StartYear; Months = EndMonth - StartMonth; Days = EndDay - StartDay.<br>
+    2. Normalize Days: If Days &lt; 0, subtract 1 from Months and add the total days of the previous month to Days.<br>
+    3. Normalize Months: If Months &lt; 0, subtract 1 from Years and add 12 to Months.
+</div>
+
+<h3>B. Interest Calculation (Backend - customerController.js)</h3>
+<p>The system utilizes a simple flat monthly interest system based on integer months.</p>
+<div class="formula">
+    Monthly Interest = (Principal Amount × Interest Rate) ÷ 100<br>
+    Yearly Interest = Monthly Interest × 12<br>
+    Total Interest = Monthly Interest × Total Duration (in Months)<br>
+    Total Payable Amount = Principal Amount + Total Interest
+</div>
+
+<h3>C. Repayment Remaining Balance (Backend - paymentController.js)</h3>
+<p>When a new payment is submitted, the system mathematically checks if the loan should be closed.</p>
+<div class="formula">
+    Total Paid = SUM(All Previously Recorded Payments) + Current Payment<br>
+    Remaining Amount = Total Payable Amount - Total Paid<br>
+    IF Remaining Amount &le; 0 THEN Status = "Paid"
+</div>
+
+<h3>D. Dashboard Aggregation Expectation (Backend - dashboardController.js)</h3>
+<p>Instead of iterating over thousands of arrays, the backend securely uses MongoDB Aggregations to mathematically sum global financials instantly.</p>
+<div class="formula">
+    Total Given = SUM(Principal Amount of EVERY Customer in Database)<br>
+    All Expected = SUM(Total Payable Amount of EVERY Customer in Database)<br>
+    Total Interest Expected = All Expected - Total Given
+</div>
+
+</body>
+</html>
