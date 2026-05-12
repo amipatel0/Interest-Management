@@ -132,7 +132,7 @@ const EditCustomer = () => {
                         <h3 className="mb-4">Edit Customer</h3>
                         <Form onSubmit={handleSubmit}>
                             <Row className="mb-4 align-items-center">
-                                <Col md={3} className="text-center">
+                                <Col md={3} className="text-center mb-3 mb-md-0">
                                     <div 
                                         className="rounded-circle overflow-hidden bg-dark d-flex align-items-center justify-content-center mx-auto border border-secondary"
                                         style={{ width: '100px', height: '100px' }}

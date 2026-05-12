@@ -28,16 +28,12 @@ const CustomerList = () => {
 
     return (
         <Container>
-            <Row className="mb-4 align-items-center">
-                <Col>
-                    <h2>Customers</h2>
-                </Col>
-                <Col className="text-end">
-                    <Link to="/customers/add" className="btn btn-primary">
-                        <PlusCircleFill className="me-2" /> Add Customer
-                    </Link>
-                </Col>
-            </Row>
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
+                <h2 className="mb-0">Customers</h2>
+                <Link to="/customers/add" className="btn btn-primary w-100 w-sm-auto" style={{ maxWidth: '200px' }}>
+                    <PlusCircleFill className="me-2" /> Add Customer
+                </Link>
+            </div>
 
             <div className="glass-card p-0 overflow-hidden">
                 <div className="table-responsive">

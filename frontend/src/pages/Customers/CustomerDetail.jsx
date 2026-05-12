@@ -71,15 +71,15 @@ const CustomerDetail = () => {
 
     return (
         <Container>
-            <div className="d-flex justify-content-between align-items-center mb-3">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 gap-3">
                 <Button variant="link" className="text-light text-decoration-none p-0" onClick={() => navigate('/customers')}>
                     <ArrowLeft /> Back to Customers
                 </Button>
-                <div>
-                    <Button variant="outline-primary" className="me-2" onClick={() => navigate(`/customers/${id}/edit`)}>
+                <div className="d-flex flex-column flex-sm-row gap-2 w-100" style={{ maxWidth: '400px' }}>
+                    <Button variant="outline-primary" className="flex-grow-1" onClick={() => navigate(`/customers/${id}/edit`)}>
                         Edit Customer
                     </Button>
-                    <Button variant="outline-danger" onClick={handleDeleteCustomer}>
+                    <Button variant="outline-danger" className="flex-grow-1" onClick={handleDeleteCustomer}>
                         Delete Customer
                     </Button>
                 </div>
@@ -144,11 +144,11 @@ const CustomerDetail = () => {
                             </Col>
                         </Row>
                         <hr style={{ borderColor: 'rgba(255,255,255,0.1)' }}/>
-                        <div className="d-flex gap-2 justify-content-end">
-                            <Button variant="outline-light" onClick={handlePreviewPrintPDF}>
+                        <div className="d-flex flex-column flex-sm-row gap-2 justify-content-md-end">
+                            <Button variant="outline-light" onClick={handlePreviewPrintPDF} className="flex-grow-1 flex-md-grow-0">
                                 <EyeFill className="me-2" /> Preview / Print
                             </Button>
-                            <Button variant="primary" onClick={handleDownloadPDF}>
+                            <Button variant="primary" onClick={handleDownloadPDF} className="flex-grow-1 flex-md-grow-0">
                                 <FileEarmarkPdfFill className="me-2" /> Download PDF
                             </Button>
                         </div>
@@ -156,9 +156,9 @@ const CustomerDetail = () => {
                 </Col>
             </Row>
 
-            <div className="d-flex justify-content-between align-items-center mb-3">
+            <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3 gap-2">
                 <h4 className="mb-0">Payment History</h4>
-                <Link to={`/customers/${id}/payment`} className="btn btn-sm btn-primary">
+                <Link to={`/customers/${id}/payment`} className="btn btn-sm btn-primary w-100 w-sm-auto" style={{ maxWidth: '200px' }}>
                     <PlusCircleFill className="me-2" /> Add Payment
                 </Link>
             </div>
