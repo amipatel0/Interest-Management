@@ -33,7 +33,13 @@ const AddCustomer = () => {
     }, [formData.start_date, formData.end_date]);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        let { name, value } = e.target;
+        if (name === 'phone') {
+            value = value.replace(/\D/g, '').slice(0, 10);
+        } else if (name === 'name') {
+            value = value.replace(/[^a-zA-Z\s]/g, '');
+        }
+        setFormData({ ...formData, [name]: value });
     };
 
     const handlePhotoChange = (e) => {
