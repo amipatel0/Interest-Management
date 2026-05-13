@@ -19,7 +19,7 @@ const Navbar = () => {
     };
 
     const handleLogout = () => {
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
         navigate('/login');
     };
 
