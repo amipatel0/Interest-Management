@@ -9,13 +9,13 @@ const connectDB = async () => {
         console.log(`MongoDB Connected: ${conn.connection.host}`);
 
         // Create default admin if not exists
-        const adminExists = await Admin.findOne({ username: 'admin' });
+        const adminExists = await Admin.findOne({ username: 'parth' });
 
         if (!adminExists) {
-            const hashedPwd = await bcrypt.hash('admin123', 10);
+            const hashedPwd = await bcrypt.hash('260793', 10);
 
             await Admin.create({
-                username: 'admin',
+                username: 'parth',
                 password: hashedPwd
             });
 
