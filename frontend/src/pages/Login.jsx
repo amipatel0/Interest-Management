@@ -10,20 +10,20 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    // Clear session when browser/app fully closes
-    useEffect(() => {
+    // // Clear session when browser/app fully closes
+    // useEffect(() => {
 
-        const clearSession = () => {
-            sessionStorage.removeItem('token');
-        };
+    //     const clearSession = () => {
+    //         sessionStorage.removeItem('token');
+    //     };
 
-        window.addEventListener('beforeunload', clearSession);
+    //     window.addEventListener('beforeunload', clearSession);
 
-        return () => {
-            window.removeEventListener('beforeunload', clearSession);
-        };
+    //     return () => {
+    //         window.removeEventListener('beforeunload', clearSession);
+    //     };
 
-    }, []);
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
